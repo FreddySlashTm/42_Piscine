@@ -1,53 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcastan <alcastan@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/03 11:59:42 by alcastan          #+#    #+#             */
-/*   Updated: 2024/03/13 15:36:44 by alcastan         ###   ########.fr       */
+/*   Created: 2024/03/18 09:34:52 by alcastan          #+#    #+#             */
+/*   Updated: 2024/03/18 09:34:54 by alcastan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+int	ft_find_next_prime(int nb)
 {
-	write (1, &c, 1);
-}
+	int	i;
+	int	j;
 
-void	ft_print_comb2(void)
-{
-	int		a;
-	int		b;
-	char	d;
-
-	a = 0;
-	while (a <= 98)
+	i = 0;
+	j = nb + 1;
+	if (nb <= 1)
+		return (2);
+	while (j > nb)
 	{
-		b = a + 1;
-		while (b <= 99)
+		i = 2;
+		while (i * i <= j)
 		{
-			d = '0' + a / 10;
-			ft_putchar(d);
-			d = '0' + a % 10;
-			ft_putchar(d);
-			write(1, " ", 1);
-			d = '0' + b / 10;
-			ft_putchar(d);
-			d = '0' + b % 10;
-			ft_putchar(d);
-			if (!(a == 98))
-				write(1, ", ", 2);
-			b++;
+			if (j % i == 0)
+				break ;
+			i++;
 		}
-		a++;
+		if (i * i > j)
+			return (j);
+		j++;
 	}
+	return (0);
 }
-
+/*
+#include <stdio.h>
 int main (void)
 {
-	ft_print_comb2();
-	return(0);
+	int nb;
+	int primo;
+
+	nb = 7;
+	primo = ft_find_next_prime(nb);
+	printf("Result: %i", primo);
 }
+*/

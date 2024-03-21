@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcastan <alcastan@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/03 11:59:42 by alcastan          #+#    #+#             */
-/*   Updated: 2024/03/13 15:36:44 by alcastan         ###   ########.fr       */
+/*   Created: 2024/03/18 16:09:03 by alcastan          #+#    #+#             */
+/*   Updated: 2024/03/18 16:09:05 by alcastan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -17,37 +16,28 @@ void	ft_putchar(char c)
 	write (1, &c, 1);
 }
 
-void	ft_print_comb2(void)
+void	ft_print_program_name(char *name)
 {
-	int		a;
-	int		b;
-	char	d;
+	int	i;
 
-	a = 0;
-	while (a <= 98)
+	i = 0;
+	while (name[i] != '\0')
 	{
-		b = a + 1;
-		while (b <= 99)
-		{
-			d = '0' + a / 10;
-			ft_putchar(d);
-			d = '0' + a % 10;
-			ft_putchar(d);
-			write(1, " ", 1);
-			d = '0' + b / 10;
-			ft_putchar(d);
-			d = '0' + b % 10;
-			ft_putchar(d);
-			if (!(a == 98))
-				write(1, ", ", 2);
-			b++;
-		}
-		a++;
+		ft_putchar (name[i]);
+		i++;
 	}
 }
 
-int main (void)
+int	main(int argc, char **argv)
 {
-	ft_print_comb2();
-	return(0);
+	int	i;
+
+	i = 1;
+	while (argc > 1)
+	{
+		ft_print_program_name (argv[i]);
+		ft_putchar ('\n');
+		i++;
+		argc--;
+	}
 }

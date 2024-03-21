@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alcastan <alcastan@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/03 11:59:42 by alcastan          #+#    #+#             */
-/*   Updated: 2024/03/13 15:36:44 by alcastan         ###   ########.fr       */
+/*   Created: 2024/03/13 13:13:24 by alcastan          #+#    #+#             */
+/*   Updated: 2024/03/13 13:19:39 by alcastan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -17,37 +16,22 @@ void	ft_putchar(char c)
 	write (1, &c, 1);
 }
 
-void	ft_print_comb2(void)
+void	ft_putstr(char *str)
 {
-	int		a;
-	int		b;
-	char	d;
+	int	i;
 
-	a = 0;
-	while (a <= 98)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		b = a + 1;
-		while (b <= 99)
-		{
-			d = '0' + a / 10;
-			ft_putchar(d);
-			d = '0' + a % 10;
-			ft_putchar(d);
-			write(1, " ", 1);
-			d = '0' + b / 10;
-			ft_putchar(d);
-			d = '0' + b % 10;
-			ft_putchar(d);
-			if (!(a == 98))
-				write(1, ", ", 2);
-			b++;
-		}
-		a++;
+		ft_putchar(str[i]);
+		i++;
 	}
 }
-
+/*
 int main (void)
 {
-	ft_print_comb2();
-	return(0);
+    char str[22] = "Hola me llamo Alfredo";
+    ft_putstr(str);
+    ft_putchar('\n');
 }
+*/
